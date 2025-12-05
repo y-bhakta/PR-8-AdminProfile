@@ -12,13 +12,13 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Form Basic</h4>
+              <h4 class="page-title">Tables</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      Add Category
+                      View extraCategory
                     </li>
                   </ol>
                 </nav>
@@ -37,52 +37,40 @@
           <!-- Start Page Content -->
           <!-- ============================================================== -->
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-12">
               <div class="card">
-                <form class="form-horizontal" method="post" action="" enctype="multipart/form-data">
-                  <div class="card-body">
-                    <h4 class="card-title">Category Info</h4>
-                    <div class="form-group row">
-                      <label
-                        for="fname"
-                        class="col-sm-3 text-end control-label col-form-label"
-                        >Category</label
-                      >
-                      <div class="col-sm-9">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="name"
-                          placeholder="First Name Here"
-                          name="name"
-                        />
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label
-                        for="fname"
-                        class="col-sm-3 text-end control-label col-form-label"
-                        >Image</label
-                      >
-                      <div class="col-sm-9">
-                        <input
-                          type="file"
-                          class="form-control"
-                          id="image"
-                          placeholder="First Name Here"
-                          name="image"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="border-top">
-                    <div class="card-body">
-                      <button type="submit" class="btn btn-primary">
-                        Submit
-                      </button>
-                    </div>
-                  </div>
-                </form>
+                <div class="card-body">
+                  <h5 class="card-title mb-0">Static Table</h5>
+                </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Image</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Category</th>
+                      <th scope="col">SubCategory</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% extracategorys.forEach((val,i)=>{ %>
+                      <tr>
+                          <td><%= i+1 %></td>
+                          <td>
+                            <img src="<%= val.image %>" width="100px" alt="<%= val.name %>">
+                          </td>
+                          <td><%= val.name %></td>
+                          <td><%= val.category.name %></td>
+                          <td><%= val.subcategory.name %></td>
+                          <td>
+                            <a href="/extracategory/edit/<%= val.id %>" class="btn btn-outline-success">Edit</a>
+                            <a href="/extracategory/delete/<%= val.id %>" class="btn btn-outline-danger">delete</a>
+                          </td>
+                      </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>

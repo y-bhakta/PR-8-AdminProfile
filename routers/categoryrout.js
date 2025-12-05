@@ -7,5 +7,8 @@ const router=Router();
 router.get('/add-category',categoryctl.addcategorypage);
 router.get('/view-category',categoryctl.viewcategorypage);
 router.post('/add-category',upload,categoryctl.addcategory);
+router.get('/category/delete/:id',categoryctl.deleteCategory);
+router.get('/category/edit/:id',categoryctl.editpage);
+router.post('/category/edit/:id',upload,categoryctl.editcategory);
 
 export default router;

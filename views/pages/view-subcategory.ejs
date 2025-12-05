@@ -12,13 +12,13 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Form Basic</h4>
+              <h4 class="page-title">Tables</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      Add Category
+                      View subCategory
                     </li>
                   </ol>
                 </nav>
@@ -37,52 +37,50 @@
           <!-- Start Page Content -->
           <!-- ============================================================== -->
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-12">
               <div class="card">
-                <form class="form-horizontal" method="post" action="" enctype="multipart/form-data">
-                  <div class="card-body">
-                    <h4 class="card-title">Category Info</h4>
-                    <div class="form-group row">
-                      <label
-                        for="fname"
-                        class="col-sm-3 text-end control-label col-form-label"
-                        >Category</label
-                      >
-                      <div class="col-sm-9">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="name"
-                          placeholder="First Name Here"
-                          name="name"
-                        />
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label
-                        for="fname"
-                        class="col-sm-3 text-end control-label col-form-label"
-                        >Image</label
-                      >
-                      <div class="col-sm-9">
-                        <input
-                          type="file"
-                          class="form-control"
-                          id="image"
-                          placeholder="First Name Here"
-                          name="image"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="border-top">
-                    <div class="card-body">
-                      <button type="submit" class="btn btn-primary">
-                        Submit
-                      </button>
-                    </div>
-                  </div>
-                </form>
+                <div class="card-body">
+                  <h5 class="card-title mb-0">Static Table</h5>
+                </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Image</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Category</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% 
+                      subcategorys.forEach((val,i)=>{ 
+                      const {name,id,image,category}=val;
+                    %>
+                      <tr>
+                          <td><%= i+1 %></td>
+                          <td>
+                            <img src="<%= image %>" width="100px" alt="<%= name %>">
+                          </td>
+                          <td><%= name %></td>
+                          <td><%= category.name %></td>
+                          <td>
+                            <a href="/subcategory/edit/<%= id %>" class="btn btn-outline-success">Edit</a>
+                            <% 
+                              const isUsed = extracategorys.some((extra) => 
+                                extra.subcategory && extra.subcategory._id.toString() === val.id.toString()
+                              );
+                            %>
+                            <% if (!isUsed) { %>
+                              <a href="/subcategory/delete/<%= id %>" class="btn btn-outline-danger">Delete</a>
+                            <% } else { %>
+                              <button class="btn btn-outline-info" disabled title="Cannot delete: used by extracategory">Exist(EC)</button>
+                            <% } %>
+                          </td>
+                      </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
