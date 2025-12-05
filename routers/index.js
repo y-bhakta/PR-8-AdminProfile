@@ -4,6 +4,7 @@ import flashauth from "../middlewares/flashAuth.js";
 import categoryRouter from "./categoryrout.js";
 import subcategoryRouter from "./subcategoryrout.js";
 import extracategory from "./extracategoryrout.js"
+import products from "./productrout.js"
 
 const router=Router();
 
@@ -11,5 +12,6 @@ router.use('/',flashauth,adminrouter);
 router.use('/',categoryRouter);
 router.use('/',subcategoryRouter);
 router.use('/',extracategory);
+router.use('/',products);
 
 export default router;

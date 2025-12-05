@@ -79,6 +79,44 @@
                         />
                       </div>
                     </div>
+                    <div class="form-group row">
+                      <label
+                        for="category"
+                        class="col-sm-3 text-end control-label col-form-label"
+                        >Category</label
+                      >
+                      <div class="col-sm-9">
+                        <select class="form-select" name="category" id="category">
+                          <option value="">--- Select-Category ---</option>
+                          <% 
+                            const selectedCatId = data && data.category && data.category._id ? String(data.category._id) : (data && data.category ? String(data.category) : '');
+                            categorys.forEach((val)=>{ 
+                              const isSelected = String(val._id) === selectedCatId;
+                          %>
+                            <option value="<%= val._id %>" <%= isSelected ? 'selected' : '' %>><%= val.name %></option>
+                          <% }) %>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label
+                        for="subcategory"
+                        class="col-sm-3 text-end control-label col-form-label"
+                        >subCategory</label
+                      >
+                      <div class="col-sm-9">
+                        <select class="form-select" name="subcategory" id="subcategory">
+                          <option value="">--- Select-subCategory ---</option>
+                          <% 
+                            const selectedSubId = data && data.subcategory && data.subcategory._id ? String(data.subcategory._id) : (data && data.subcategory ? String(data.subcategory) : '');
+                            subcategorys.forEach((val)=>{
+                              const isSelectedSub = String(val._id) === selectedSubId;
+                          %>
+                            <option value="<%= val._id %>" <%= isSelectedSub ? 'selected' : '' %>><%= val.name %></option>
+                          <% }) %>
+                        </select>
+                      </div>
+                    </div>
                   </div>
                   <div class="border-top">
                     <div class="card-body">

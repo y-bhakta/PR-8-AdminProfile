@@ -49,9 +49,11 @@ const extracategoryctl={
     async editpage(req,res){
         try {
             const {id}=req.params;
-            let data=await extraCategory.findById(id);
+            let data = await extraCategory.findById(id).populate('category').populate('subcategory');
+            let categorys = await Category.find({});
+            let subcategorys = await subCategory.find({});
             return res.render('./pages/edit-extracategory.ejs',{
-                data
+                data,categorys,subcategorys
             });
         } catch (error) {
             console.log(error);

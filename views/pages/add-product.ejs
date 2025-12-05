@@ -18,7 +18,7 @@
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      Edit subCategory
+                      Add Products
                     </li>
                   </ol>
                 </nav>
@@ -41,27 +41,22 @@
               <div class="card">
                 <form class="form-horizontal" method="post" action="" enctype="multipart/form-data">
                   <div class="card-body">
-                    <h4 class="card-title">subCategory Info</h4>
+                    <h4 class="card-title">Product Info</h4>
                     <div class="form-group row">
                       <label
                         for="fname"
                         class="col-sm-3 text-end control-label col-form-label"
-                        >subCategory</label
+                        >Product</label
                       >
                       <div class="col-sm-9">
                         <input
                           type="text"
                           class="form-control"
                           id="name"
-                          placeholder="First Name Here"
+                          placeholder="Product Name"
                           name="name"
-                          value="<%= data.name %>"
                         />
                       </div>
-                    </div>
-                    <div class="d-flex w-100 justify-content-center my-3 align-items-center">
-                        <span class="me-2">Exicting Img: </span>
-                        <img src="/<%= data.image %>" width="100px" alt="<%= data.name %>">
                     </div>
                     <div class="form-group row">
                       <label
@@ -81,19 +76,61 @@
                     </div>
                     <div class="form-group row">
                       <label
+                        for="fname"
+                        class="col-sm-3 text-end control-label col-form-label"
+                        >Price</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="price"
+                          placeholder="Price Here"
+                          name="price"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label
                         for="category"
                         class="col-sm-3 text-end control-label col-form-label"
                         >Category</label
                       >
                       <div class="col-sm-9">
-                        <select class="form-select" name="category" id="category">
+                        <select class="form-select" name="category" id="catrgory">
                           <option value="">--- Select-Category ---</option>
-                          <% 
-                            const selectedCatId = data && data.category && data.category._id ? String(data.category._id) : (data && data.category ? String(data.category) : '');
-                            categorys.forEach((val)=>{
-                              const isSelected = String(val._id) === selectedCatId;
-                          %>
-                            <option value="<%= val._id %>" <%= isSelected ? 'selected' : '' %>><%= val.name %></option>
+                          <% categorys.forEach((val)=>{ %>
+                            <option value="<%= val._id %>"><%= val.name %></option>
+                          <% }) %>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label
+                        for="category"
+                        class="col-sm-3 text-end control-label col-form-label"
+                        >SubCategory</label
+                      >
+                      <div class="col-sm-9">
+                        <select class="form-select" name="subcategory" id="subcatrgory">
+                          <option value="">--- Select-Category ---</option>
+                          <% subcategorys.forEach((val)=>{ %>
+                            <option value="<%= val._id %>"><%= val.name %></option>
+                          <% }) %>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label
+                        for="extracategory"
+                        class="col-sm-3 text-end control-label col-form-label"
+                        >ExtraCategory</label
+                      >
+                      <div class="col-sm-9">
+                        <select class="form-select" name="extracategory" id="extracatrgory">
+                          <option value="">--- Select-extraCategory ---</option>
+                          <% extracategorys.forEach((val)=>{ %>
+                            <option value="<%= val._id %>"><%= val.name %></option>
                           <% }) %>
                         </select>
                       </div>

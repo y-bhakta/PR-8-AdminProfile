@@ -46,9 +46,10 @@ const subcategoryctl={
     async editpage(req,res){
         try {
             const {id}=req.params;
-            let data=await subCategory.findById(id);
+            let data = await subCategory.findById(id).populate('category');
+            let categorys = await Category.find({});
             return res.render('./pages/edit-subcategory.ejs',{
-                data
+                data,categorys
             });
         } catch (error) {
             console.log(error);
