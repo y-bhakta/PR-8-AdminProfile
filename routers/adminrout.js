@@ -23,5 +23,6 @@ adminrouter.post('/change-password',adminctl.changepassword);
 adminrouter.get('/profile',adminctl.profile);
 adminrouter.get('/edit-profile',adminctl.editprofilepage);
 adminrouter.post('/edit-profile', upload, adminctl.editprofile);
+adminrouter.get('/view-all-products',adminctl.viewallproductspaeg);
 
 export default adminrouter;

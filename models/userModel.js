@@ -30,6 +30,11 @@ const userSchema=new mongoose.Schema({
     gender:{
         enum:['Male','Female'],
         type: String
+    },
+    role:{
+        enum:['User','Admin'],
+        type:String,
+        default:'User'
     }
 },{
     timestamps:true

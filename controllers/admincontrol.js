@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
 import env from "dotenv";
+import Products from "../models/productmodel.js";
 env.config();
 
 let gotp;
@@ -32,7 +33,7 @@ const adminctl = {
             user.DOB = '';
             user.Mobile = '';
             user.save();
-            req.flash('success', 'Login Successfull!');
+            req.flash('success', 'SignUp Successfull!');
             return res.redirect('/login');
         } catch (error) {
             console.log(error);
@@ -235,6 +236,15 @@ const adminctl = {
         } catch (error) {
             console.log(error);
             return res.redirect('/newpass');            
+        }
+    },
+    async viewallproductspaeg(req,res){
+        try {
+            let products=await Products.find({}).populate('extracategory');
+            return res.render("./pages/view-all-products",{products});
+        } catch (error) {
+            console.log(error);
+            return res.redirect(req.get('Referrer') || '/');
         }
     }
 }
