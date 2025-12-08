@@ -211,6 +211,7 @@ const adminctl = {
             req.flash('success','OTP Matched Successfully.');
             return res.render('./pages/newpass.ejs');
         }
+        req.flash('error','OTP Not Matched.');
         return res.render('./pages/otpPage.ejs');
     },
     async newpass(req,res){
