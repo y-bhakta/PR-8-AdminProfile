@@ -11,4 +11,6 @@ router.get('/delete-product/:id',productctl.deleteproduct);
 router.get('/edit-product/:id',productctl.editproductpage);
 router.post('/edit-product/:id',upload,productctl.editproduct);
 
+router.get('/product-details/:id',productctl.productdetailspage);
+
 export default router;

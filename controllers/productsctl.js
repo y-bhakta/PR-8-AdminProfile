@@ -80,6 +80,19 @@ const productctl={
             console.log(error);
             return res.redirect(req.get('Referrer') || '/');
         }
+    },
+    async productdetailspage(req,res){
+        try {
+            const {id}=req.params;
+            let oneproduct=await Products.findById(id).populate('category').populate('subcategory').populate('extracategory');
+            let products=await Products.find({}).populate('category').populate('subcategory').populate('extracategory');
+            return res.render('./pages/product-details.ejs',{
+                oneproduct,products
+            }) ;
+        } catch (error) {
+            console.log(error);
+            return res.redirect(req.get('Referre') || '/');
+        }
     }
 }
 

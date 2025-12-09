@@ -246,7 +246,7 @@
  border-radius: 1rem;
  border: none;
  background-color: #008bf8;
- color: #fff;
+ color: #fff !important;
  font-size: 1rem;
  padding: .5rem 1rem;
  position: absolute;
@@ -254,6 +254,7 @@
  bottom: 0;
  opacity: 0;
  transition: 0.3s ease-out;
+ text-align: center;
 }
 
 .text-body {
