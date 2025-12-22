@@ -103,8 +103,6 @@ const adminctl = {
         try {
             let oneuser = res.locals.user;
             const updateData = { ...req.body };
-            // If a file was uploaded by multer, `req.file` will be present.
-            // Save the relative path (served by express.static('/uploads')).
             if (req.file) {
                 updateData.image = `uploads/${req.file.filename}`;
                 console.log(`[editprofile] Image uploaded: ${updateData.image}`);
