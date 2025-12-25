@@ -43,7 +43,7 @@ const adminctl = {
     async login(req, res) {
         try {
             const { username, password } = req.body;
-            let user = await UserModel.findOne({ username });
+            let user = await UserModel.findOne({ name:username });
             if (!user) {
                 req.flash("error", "User Not Found");
                 return res.redirect('/login');
