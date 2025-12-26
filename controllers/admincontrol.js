@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
 import env from "dotenv";
 import Products from "../models/productmodel.js";
+import db from '../configs/db.js';
 env.config();
 
 let gotp;

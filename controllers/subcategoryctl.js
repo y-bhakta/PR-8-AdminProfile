@@ -2,6 +2,7 @@ import Category from "../models/categorymodel.js";
 import subCategory from "../models/subcategorymodel.js";
 import extraCategory from "../models/extracategorymodel.js"
 import fs from "fs";
+import db from '../configs/db.js';
 
 const subcategoryctl={
     async addsubcategorypage(req,res){

@@ -3,6 +3,7 @@ import extraCategory from "../models/extracategorymodel.js";
 import Products from "../models/productmodel.js";
 import subCategory from "../models/subcategorymodel.js";
 import fs from "fs";
+import db from '../configs/db.js';
 
 const productctl={
     async addproductpage(req,res){
