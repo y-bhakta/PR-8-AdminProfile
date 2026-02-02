@@ -6,9 +6,9 @@ const router=Router();
 
 router.get('/add-extracategory',extracategoryctl.addextracategorypage);
 router.get('/view-extracategory',extracategoryctl.viewextracategorypage);
-router.post('/add-extracategory',upload,extracategoryctl.addextracategory);
+router.post('/add-extracategory',upload.single('image'),extracategoryctl.addextracategory);
 router.get('/extracategory/delete/:id',extracategoryctl.deleteextraCategory);
 router.get('/extracategory/edit/:id',extracategoryctl.editpage);
-router.post('/extracategory/edit/:id',upload,extracategoryctl.editextracategory);
+router.post('/extracategory/edit/:id',upload.single('image'),extracategoryctl.editextracategory);
 
 export default router;

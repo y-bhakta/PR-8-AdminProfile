@@ -6,9 +6,9 @@ const router=Router();
 
 router.get('/add-category',categoryctl.addcategorypage);
 router.get('/view-category',categoryctl.viewcategorypage);
-router.post('/add-category',upload,categoryctl.addcategory);
+router.post('/add-category',upload.single('image'),categoryctl.addcategory);
 router.get('/category/delete/:id',categoryctl.deleteCategory);
 router.get('/category/edit/:id',categoryctl.editpage);
-router.post('/category/edit/:id',upload,categoryctl.editcategory);
+router.post('/category/edit/:id',upload.single('image'),categoryctl.editcategory);
 
 export default router;
