@@ -64,9 +64,9 @@
                             </td>
                             <td><%= pro.name %></td>
                             <td><%= pro.price %></td>
-                            <td><%= pro.category.name %></td>
-                            <td><%= pro.subcategory.name %></td>
-                            <td><%= pro.extracategory.name %></td>
+                            <td><%= pro.category && pro.category.name ? pro.category.name : 'N/A' %></td>
+                            <td><%= pro.subcategory && pro.subcategory.name ? pro.subcategory.name : 'N/A' %></td>
+                            <td><%= pro.extracategory && pro.extracategory.name ? pro.extracategory.name : 'N/A' %></td>
                             <td>
                                 <a href="/edit-product/<%= pro._id %>" class="btn btn-outline-success">Edit</a>
                                 <a href="/delete-product/<%= pro._id %>" class="btn btn-outline-danger">Delete</a>

@@ -23,7 +23,11 @@ const productctl={
     },
     async viewproductpage(req,res){
         try {
-            let product=await Products.find({}).populate('extracategory').populate('category').populate('subcategory');
+            let product=await Products.find({})
+                .populate({path: 'category', model: 'CategoryTbl'})
+                .populate({path: 'subcategory', model: 'subCategoryTbl'})
+                .populate({path: 'extracategory', model: 'extraCategoryTbl'});
+            console.log('Populated products:', product.slice(0, 2)); // Log first 2 for debugging
             return res.render('./pages/view-product.ejs',{product});
         } catch (error) {
             console.log(error);
